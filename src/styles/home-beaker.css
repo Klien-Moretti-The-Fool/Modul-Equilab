@@ -1,0 +1,70 @@
+/* Motion is confined to the homepage illustration; quantitative readings are unchanged. */
+
+.beaker-animated .home-beaker-particle {
+  animation: home-particle-drift var(--particle-duration,4s) ease-in-out infinite alternate;
+  animation-delay: var(--particle-delay,0s);
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.beaker-animated .home-liquid-surface {
+  animation: home-liquid-wave 3.6s ease-in-out infinite alternate;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.beaker-animated .home-liquid {
+  animation: home-liquid-shimmer 5s ease-in-out infinite alternate;
+}
+
+.beaker-animated .home-liquid-light {
+  animation: home-light-drift 5.2s ease-in-out infinite alternate;
+}
+
+.beaker-animated .home-liquid-light.alternate {
+  animation-delay: -2.6s;
+}
+
+@keyframes home-particle-drift {
+  from {
+    transform: translate(0,0);
+  }
+  to {
+    transform: translate(var(--particle-x,5px),var(--particle-y,-5px));
+  }
+}
+
+@keyframes home-liquid-wave {
+  from {
+    transform: translateY(-1px) scaleY(.86);
+  }
+  to {
+    transform: translateY(2px) scaleY(1.12);
+  }
+}
+
+@keyframes home-liquid-shimmer {
+  from {
+    opacity: .58;
+  }
+  to {
+    opacity: .7;
+  }
+}
+
+@keyframes home-light-drift {
+  from {
+    transform: translateY(-4px);
+    opacity: .12;
+  }
+  to {
+    transform: translateY(4px);
+    opacity: .3;
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  .beaker-animated .home-beaker-particle,.beaker-animated .home-liquid-surface,.beaker-animated .home-liquid,.beaker-animated .home-liquid-light {
+    animation: none;
+  }
+}
